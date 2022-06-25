@@ -26,6 +26,7 @@ class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     //var name: String = ""
     
     func search(request: Search.Search.Request) {
+        presenter?.presentLoading()
         worker.search(query: request.query, startIndex: request.startIndex, maxResults: request.maxResults, completion: { [weak self] response in
             self?.presenter?.presentSearch(response: response)
         })

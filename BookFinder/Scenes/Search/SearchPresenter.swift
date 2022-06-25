@@ -13,11 +13,16 @@
 import UIKit
 
 protocol SearchPresentationLogic {
+    func presentLoading()
     func presentSearch(response: Search.Search.Response)
 }
 
 class SearchPresenter: SearchPresentationLogic {
     weak var viewController: SearchDisplayLogic?
+    
+    func presentLoading() {
+        viewController?.displayLoading()
+    }
     
     func presentSearch(response: Search.Search.Response) {
         if let error = response.error {

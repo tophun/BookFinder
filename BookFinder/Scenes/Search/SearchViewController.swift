@@ -16,6 +16,7 @@ import Then
 
 protocol SearchDisplayLogic: AnyObject {
     func displayError(error: Error)
+    func displayLoading()
     func displaySearch(viewModel: Search.Search.ViewModel)
 }
 
@@ -122,7 +123,12 @@ extension SearchViewController {
         present(alert, animated: true)
     }
     
+    func displayLoading() {
+        Spinner.show()
+    }
+    
     func displaySearch(viewModel: Search.Search.ViewModel) {
+        Spinner.hidden()
         self.resultItems += viewModel.resultItems
         self.pageable = self.resultItems.count < viewModel.totalItems
         self.tableView.reloadData()
