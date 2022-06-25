@@ -24,6 +24,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
     
     private let maxResults: Int = 40
+    private var pageable: Bool = false
     private var resultItems: [Search.Search.ViewModel.ResultModel] = []
     
     lazy var tableView = UITableView(frame: .zero).then {
@@ -89,6 +90,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     }
     
     func reset() {
+        self.resultItems.removeAll()
         self.tableView.reloadData()
     }
 }
@@ -122,6 +124,7 @@ extension SearchViewController {
     
     func displaySearch(viewModel: Search.Search.ViewModel) {
         self.resultItems += viewModel.resultItems
+        self.pageable = self.resultItems.count < viewModel.totalItems
         self.tableView.reloadData()
     }
 }
@@ -142,6 +145,19 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
         cell.bind(resultItems[indexPath.row])
         return cell
     }
+    
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        // 페이징이 가능하면서 리스트 마지막 아이템에 도달했을때
+        if indexPath.row == resultItems.count - 1 && pageable {
+            guard let query = searchController.searchBar.text else { return }
+            let request = Search.Search.Request(query: query, startIndex: resultItems.count, maxResults: maxResults)
+            search(request: request)
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return UITableView.automaticDimension
+    }
 }
 
 // MARK: - UISearchBarDelegate
@@ -151,7 +167,7 @@ extension SearchViewController: UISearchBarDelegate {
         guard let query = searchBar.text, !query.isEmpty else { return }
         reset()
         
-        let request = Search.Search.Request(query: query, startIndex: 0, maxResults: maxResults)
+        let request = Search.Search.Request(query: query, startIndex: resultItems.count, maxResults: maxResults)
         search(request: request)
     }
     
