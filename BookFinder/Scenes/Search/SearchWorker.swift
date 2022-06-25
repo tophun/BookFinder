@@ -11,7 +11,26 @@
 //
 
 import UIKit
+import Alamofire
 
 class SearchWorker {
-    
+    func search(query: String, startIndex: Int, maxResults: Int, completion: @escaping (Search.Search.Response) -> Void) {
+        AF.request(BooksAPI.volumes(query: query, startIndex: startIndex, maxResults: maxResults))
+            .validate()
+            .responseDecodable(of: VolumesResponse.self) { response in
+                switch response.result {
+                case let .success(value):
+                    DispatchQueue.main.async {
+                        let response = Search.Search.Response(items: value.items, totalItems: value.totalItems)
+                        completion(response)
+                    }
+                    
+                case let .failure(error):
+                    DispatchQueue.main.async {
+                        let response = Search.Search.Response(error: error)
+                        completion(response)
+                    }
+                }
+            }
+    }
 }
