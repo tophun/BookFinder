@@ -15,8 +15,11 @@ import UIKit
 enum Search {
     
     // MARK: Use cases
-    enum Something {
+    enum Search {
         struct Request {
+            var query: String
+            var startIndex: Int
+            var maxResults: Int
         }
         
         struct Response {
