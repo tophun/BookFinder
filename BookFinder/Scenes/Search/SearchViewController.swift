@@ -141,7 +141,6 @@ extension SearchViewController {
 // MARK: - UITableViewDataSource & UITableViewDelegate
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
-    // Todo: 데이터 적용 및 테이블셀 적용
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         isResult && resultItems.isEmpty ? tableView.noResult("일치하는 검색 결과가 없습니다 :(") : tableView.restore()
         return resultItems.count
