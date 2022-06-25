@@ -17,18 +17,23 @@ protocol SearchBusinessLogic {
 }
 
 protocol SearchDataStore {
-    //var name: String { get set }
+    var resultVolums: [Volume] { get }
 }
 
 class SearchInteractor: SearchBusinessLogic, SearchDataStore {
     var presenter: SearchPresentationLogic?
     var worker = SearchWorker()
-    //var name: String = ""
+    var resultVolums: [Volume] = []
     
     func search(request: Search.Search.Request) {
+        if request.startIndex == 0 {
+            resultVolums.removeAll()
+        }
+        
         presenter?.presentLoading()
         worker.search(query: request.query, startIndex: request.startIndex, maxResults: request.maxResults, completion: { [weak self] response in
             self?.presenter?.presentSearch(response: response)
+            self?.resultVolums += response.items
         })
     }
 }
