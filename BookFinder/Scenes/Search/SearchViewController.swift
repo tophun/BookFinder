@@ -114,7 +114,9 @@ extension SearchViewController {
 
 extension SearchViewController {
     func displayError(error: Error) {
-        
+        let alert = UIAlertController(title: "알림", message: error.localizedDescription, preferredStyle: .alert)
+        alert.addAction(.init(title: "확인", style: .default))
+        present(alert, animated: true)
     }
     
     func displaySearch(viewModel: Search.Search.ViewModel) {
