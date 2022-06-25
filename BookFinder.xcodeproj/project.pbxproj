@@ -22,6 +22,9 @@
 		36EBAD3E28676054009AB643 /* SearchInteractorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBAD3A28676054009AB643 /* SearchInteractorTests.swift */; };
 		36EBAD3F28676054009AB643 /* SearchWorkerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBAD3B28676054009AB643 /* SearchWorkerTests.swift */; };
 		36EBAD4028676054009AB643 /* SearchPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBAD3C28676054009AB643 /* SearchPresenterTests.swift */; };
+		36EBAD442867635C009AB643 /* Volume.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBAD432867635C009AB643 /* Volume.swift */; };
+		36EBAD4628676364009AB643 /* VolumeInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBAD4528676364009AB643 /* VolumeInfo.swift */; };
+		36EBAD482867636F009AB643 /* ImageLinks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36EBAD472867636F009AB643 /* ImageLinks.swift */; };
 		C86C1786BF5B7525012BBADD /* Pods_BookFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DEA9BC2C055A8AAF1564DAA3 /* Pods_BookFinder.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +57,9 @@
 		36EBAD3A28676054009AB643 /* SearchInteractorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInteractorTests.swift; sourceTree = "<group>"; };
 		36EBAD3B28676054009AB643 /* SearchWorkerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchWorkerTests.swift; sourceTree = "<group>"; };
 		36EBAD3C28676054009AB643 /* SearchPresenterTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenterTests.swift; sourceTree = "<group>"; };
+		36EBAD432867635C009AB643 /* Volume.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Volume.swift; sourceTree = "<group>"; };
+		36EBAD4528676364009AB643 /* VolumeInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VolumeInfo.swift; sourceTree = "<group>"; };
+		36EBAD472867636F009AB643 /* ImageLinks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLinks.swift; sourceTree = "<group>"; };
 		57B550EAE67233A4D5F23C57 /* Pods-BookFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookFinder.debug.xcconfig"; path = "Target Support Files/Pods-BookFinder/Pods-BookFinder.debug.xcconfig"; sourceTree = "<group>"; };
 		78B4887F4FDAAF5F2483ED6F /* Pods-BookFinder-BookFinderUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookFinder-BookFinderUITests.release.xcconfig"; path = "Target Support Files/Pods-BookFinder-BookFinderUITests/Pods-BookFinder-BookFinderUITests.release.xcconfig"; sourceTree = "<group>"; };
 		A14ED4208525325062CC36F9 /* Pods-BookFinderTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookFinderTests.release.xcconfig"; path = "Target Support Files/Pods-BookFinderTests/Pods-BookFinderTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -118,6 +124,7 @@
 			isa = PBXGroup;
 			children = (
 				36A58E172867591600ADD660 /* Application */,
+				36EBAD4128676301009AB643 /* Models */,
 				36EBAD2928675B42009AB643 /* Scenes */,
 				36A58E192867594300ADD660 /* Resources */,
 				36A58E182867592200ADD660 /* SupportingFiles */,
@@ -197,6 +204,24 @@
 				36EBAD3C28676054009AB643 /* SearchPresenterTests.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		36EBAD4128676301009AB643 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				36EBAD4228676329009AB643 /* Entities */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		36EBAD4228676329009AB643 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				36EBAD432867635C009AB643 /* Volume.swift */,
+				36EBAD4528676364009AB643 /* VolumeInfo.swift */,
+				36EBAD472867636F009AB643 /* ImageLinks.swift */,
+			);
+			path = Entities;
 			sourceTree = "<group>";
 		};
 		CB45BEAD01D1094E72601101 /* Pods */ = {
@@ -380,12 +405,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				36EBAD3528675B5E009AB643 /* SearchViewController.swift in Sources */,
+				36EBAD482867636F009AB643 /* ImageLinks.swift in Sources */,
 				36EBAD3628675B5E009AB643 /* SearchInteractor.swift in Sources */,
+				36EBAD4628676364009AB643 /* VolumeInfo.swift in Sources */,
 				36EBAD3328675B5E009AB643 /* SearchRouter.swift in Sources */,
 				36EBAD3228675B5E009AB643 /* SearchWorker.swift in Sources */,
 				36A58DE82867578C00ADD660 /* AppDelegate.swift in Sources */,
 				36EBAD3128675B5E009AB643 /* SearchPresenter.swift in Sources */,
 				36EBAD3428675B5E009AB643 /* SearchModels.swift in Sources */,
+				36EBAD442867635C009AB643 /* Volume.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
