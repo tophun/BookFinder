@@ -38,9 +38,42 @@ class SearchInteractorTests: XCTestCase {
     // MARK: Test doubles
     
     class SearchPresentationLogicSpy: SearchPresentationLogic {
+        var presentSearchCalled = false
+        var response: Search.Search.Response!
         
+        func presentSearch(response: Search.Search.Response) {
+            presentSearchCalled = true
+            self.response = response
+        }
+    }
+    
+    class SearchWorkerSpy: SearchWorker {
+        var searchCalled = false
+        
+        override func search(query: String, startIndex: Int, maxResults: Int, completion: @escaping (Search.Search.Response) -> Void) {
+            searchCalled = true
+            let response = Search.Search.Response(items: [], totalItems: 100)
+            completion(response)
+        }
     }
     
     // MARK: Tests
     
+    func test_검색API결과를_Presentor로전달() {
+        // Given
+        let presentationLogicSpy = SearchPresentationLogicSpy()
+        sut.presenter = presentationLogicSpy
+        let workerSpy = SearchWorkerSpy()
+        sut.worker = workerSpy
+        
+        // When
+        let request = Search.Search.Request(query: "테스트", startIndex: 0, maxResults: 40)
+        sut.search(request: request)
+        
+        // Then
+        XCTAssert(presentationLogicSpy.presentSearchCalled)
+        XCTAssert(presentationLogicSpy.response.items.isEmpty)
+        XCTAssertEqual(presentationLogicSpy.response.totalItems, 100)
+        
+    }
 }

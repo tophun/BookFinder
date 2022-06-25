@@ -13,10 +13,13 @@
 import UIKit
 
 protocol SearchPresentationLogic {
-    
+    func presentSearch(response: Search.Search.Response)
 }
 
 class SearchPresenter: SearchPresentationLogic {
     weak var viewController: SearchDisplayLogic?
     
+    func presentSearch(response: Search.Search.Response) {
+        
+    }
 }
