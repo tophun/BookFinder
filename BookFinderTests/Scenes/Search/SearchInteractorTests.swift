@@ -74,6 +74,5 @@ class SearchInteractorTests: XCTestCase {
         XCTAssert(presentationLogicSpy.presentSearchCalled)
         XCTAssert(presentationLogicSpy.response.items.isEmpty)
         XCTAssertEqual(presentationLogicSpy.response.totalItems, 100)
-        
     }
 }

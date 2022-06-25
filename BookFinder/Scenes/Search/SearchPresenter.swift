@@ -20,6 +20,25 @@ class SearchPresenter: SearchPresentationLogic {
     weak var viewController: SearchDisplayLogic?
     
     func presentSearch(response: Search.Search.Response) {
+        if let error = response.error {
+            viewController?.displayError(error: error)
+            return
+        }
         
+        var resultItems: [Search.Search.ViewModel.ResultModel] = []
+        response.items.forEach {
+            let resultItem = Search.Search.ViewModel.ResultModel(
+                thumnailURL: $0.volumeInfo?.imageLinks?.smallThumbnail ?? "",
+                title: $0.volumeInfo?.title ?? "",
+                author: $0.volumeInfo?.authors.joined(separator: ",") ?? "",
+                publishedDate: $0.volumeInfo?.publishedDate ?? ""
+            )
+            resultItems.append(resultItem)
+        }
+        let viewModel = Search.Search.ViewModel(
+            resultItems: resultItems,
+            totalItems: response.totalItems
+        )
+        viewController?.displaySearch(viewModel: viewModel)
     }
 }

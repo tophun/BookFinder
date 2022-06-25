@@ -29,6 +29,15 @@ enum Search {
         }
         
         struct ViewModel {
+            struct ResultModel {
+                var thumnailURL: String
+                var title: String
+                var author: String
+                var publishedDate: String
+            }
+            
+            var resultItems: [ResultModel]
+            var totalItems: Int
         }
     }
 }

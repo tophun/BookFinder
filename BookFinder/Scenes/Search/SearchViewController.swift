@@ -15,7 +15,8 @@ import SnapKit
 import Then
 
 protocol SearchDisplayLogic: AnyObject {
-    
+    func displayError(error: Error)
+    func displaySearch(viewModel: Search.Search.ViewModel)
 }
 
 class SearchViewController: UIViewController, SearchDisplayLogic {
@@ -23,6 +24,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
     
     private let maxResults: Int = 40
+    private var resultItems: [Search.Search.ViewModel.ResultModel] = []
     
     lazy var tableView = UITableView(frame: .zero).then {
         $0.dataSource = self
@@ -105,6 +107,19 @@ extension SearchViewController {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
             $0.leading.trailing.bottom.equalToSuperview()
         }
+    }
+}
+
+// MARK: - SearchDisplayLogic
+
+extension SearchViewController {
+    func displayError(error: Error) {
+        
+    }
+    
+    func displaySearch(viewModel: Search.Search.ViewModel) {
+        self.resultItems += viewModel.resultItems
+        self.tableView.reloadData()
     }
 }
 

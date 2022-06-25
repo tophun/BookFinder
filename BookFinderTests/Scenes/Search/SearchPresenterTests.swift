@@ -38,8 +38,43 @@ class SearchPresenterTests: XCTestCase {
     // MARK: Test doubles
     
     class SearchDisplayLogicSpy: SearchDisplayLogic {
-       
+        var displayErrorCalled = false
+        var displaySearchCalled = false
+        
+        func displayError(error: Error) {
+            displayErrorCalled = true
+        }
+        
+        func displaySearch(viewModel: Search.Search.ViewModel) {
+            displaySearchCalled = true
+        }
     }
     
     // MARK: Tests
+    
+    func test_ViewModel을만들어서_ViewController로전달() {
+        // Given
+        let displayLogicSpy = SearchDisplayLogicSpy()
+        sut.viewController = displayLogicSpy
+        
+        // When
+        let response = Search.Search.Response(items: [], totalItems: 0)
+        sut.presentSearch(response: response)
+        
+        // Then
+        XCTAssert(displayLogicSpy.displaySearchCalled)
+    }
+    
+    func test_API실패하였을때_ViewController로전달() {
+        // Given
+        let displayLogicSpy = SearchDisplayLogicSpy()
+        sut.viewController = displayLogicSpy
+        
+        // When
+        let response = Search.Search.Response(items: [], totalItems: 0, error: URLError(.badServerResponse))
+        sut.presentSearch(response: response)
+        
+        // Then
+        XCTAssert(displayLogicSpy.displayErrorCalled)
+    }
 }
