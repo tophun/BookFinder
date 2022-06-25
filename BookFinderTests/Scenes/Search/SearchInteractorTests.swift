@@ -38,25 +38,9 @@ class SearchInteractorTests: XCTestCase {
     // MARK: Test doubles
     
     class SearchPresentationLogicSpy: SearchPresentationLogic {
-        var presentSomethingCalled = false
         
-        func presentSomething(response: Search.Something.Response) {
-            presentSomethingCalled = true
-        }
     }
     
     // MARK: Tests
     
-    func testDoSomething() {
-        // Given
-        let spy = SearchPresentationLogicSpy()
-        sut.presenter = spy
-        let request = Search.Something.Request()
-        
-        // When
-        //sut.doSomething(request: request)
-        
-        // Then
-        XCTAssertTrue(spy.presentSomethingCalled, "doSomething(request:) should ask the presenter to format the result")
-    }
 }

@@ -22,6 +22,8 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     var interactor: SearchBusinessLogic?
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
     
+    private let maxResults: Int = 40
+    
     lazy var tableView = UITableView(frame: .zero).then {
         $0.dataSource = self
         $0.delegate = self
@@ -78,6 +80,14 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
         setupView()
         setupLayout()
     }
+    
+    func search(request: Search.Search.Request) {
+        interactor?.search(request: request)
+    }
+    
+    func reset() {
+        self.tableView.reloadData()
+    }
 }
 
 extension SearchViewController {
@@ -115,10 +125,14 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
 
 extension SearchViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        print(#function)
+        guard let query = searchBar.text, !query.isEmpty else { return }
+        reset()
+        
+        let request = Search.Search.Request(query: query, startIndex: 0, maxResults: maxResults)
+        search(request: request)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        print(#function)
+        reset()
     }
 }

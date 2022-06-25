@@ -46,36 +46,25 @@ class SearchViewControllerTests: XCTestCase {
     // MARK: Test doubles
     
     class SearchBusinessLogicSpy: SearchBusinessLogic {
-        var doSomethingCalled = false
+        var searchCalled = false
         
-        func doSomething(request: Search.Something.Request) {
-            doSomethingCalled = true
+        func search(request: Search.Search.Request) {
+            searchCalled = true
         }
     }
     
     // MARK: Tests
     
-    func testShouldDoSomethingWhenViewIsLoaded() {
+    func test_키워드입력후_검색() {
         // Given
         let spy = SearchBusinessLogicSpy()
         sut.interactor = spy
         
         // When
-        loadView()
+        let request = Search.Search.Request(query: "테스트", startIndex: 0, maxResults: 40)
+        sut.search(request: request)
         
         // Then
-        XCTAssertTrue(spy.doSomethingCalled, "viewDidLoad() should ask the interactor to do something")
-    }
-    
-    func testDisplaySomething() {
-        // Given
-        let viewModel = Search.Something.ViewModel()
-        
-        // When
-        loadView()
-        //sut.displaySomething(viewModel: viewModel)
-        
-        // Then
-        //XCTAssertEqual(sut.nameTextField.text, "", "displaySomething(viewModel:) should update the name text field")
+        XCTAssertTrue(spy.searchCalled)
     }
 }

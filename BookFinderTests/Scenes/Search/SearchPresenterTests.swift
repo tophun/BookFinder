@@ -38,25 +38,8 @@ class SearchPresenterTests: XCTestCase {
     // MARK: Test doubles
     
     class SearchDisplayLogicSpy: SearchDisplayLogic {
-        var displaySomethingCalled = false
-        
-        func displaySomething(viewModel: Search.Something.ViewModel) {
-            displaySomethingCalled = true
-        }
+       
     }
     
     // MARK: Tests
-    
-    func testPresentSomething() {
-        // Given
-        let spy = SearchDisplayLogicSpy()
-        sut.viewController = spy
-        let response = Search.Something.Response()
-        
-        // When
-        //sut.presentSomething(response: response)
-        
-        // Then
-        XCTAssertTrue(spy.displaySomethingCalled, "presentSomething(response:) should ask the view controller to display the result")
-    }
 }
