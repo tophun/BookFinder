@@ -23,6 +23,9 @@ enum Search {
         }
         
         struct Response {
+            var items: [Volume] = []
+            var totalItems: Int = 0
+            var error: Error?
         }
         
         struct ViewModel {
