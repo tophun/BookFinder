@@ -38,12 +38,18 @@ class SearchInteractorTests: XCTestCase {
     // MARK: Test doubles
     
     class SearchPresentationLogicSpy: SearchPresentationLogic {
+        
+        
         var presentSearchCalled = false
         var response: Search.Search.Response!
         
         func presentSearch(response: Search.Search.Response) {
             presentSearchCalled = true
             self.response = response
+        }
+        var presentLoadingCalled = false
+        func presentLoading() {
+            presentLoadingCalled = true
         }
     }
     

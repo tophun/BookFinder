@@ -38,8 +38,14 @@ class SearchPresenterTests: XCTestCase {
     // MARK: Test doubles
     
     class SearchDisplayLogicSpy: SearchDisplayLogic {
+        
+        var displayLoadingCalled = false
         var displayErrorCalled = false
         var displaySearchCalled = false
+        
+        func displayLoading() {
+            displayLoadingCalled = true
+        }
         
         func displayError(error: Error) {
             displayErrorCalled = true

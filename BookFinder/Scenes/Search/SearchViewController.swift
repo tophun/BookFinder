@@ -26,6 +26,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     
     private let maxResults: Int = 40
     private var pageable: Bool = false
+    private var isResult: Bool = false
     private var resultItems: [Search.Search.ViewModel.ResultModel] = []
     
     lazy var tableView = UITableView(frame: .zero).then {
@@ -92,6 +93,7 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     
     func reset() {
         self.resultItems.removeAll()
+        self.isResult = false
         self.tableView.reloadData()
     }
 }
@@ -131,6 +133,7 @@ extension SearchViewController {
         Spinner.hidden()
         self.resultItems += viewModel.resultItems
         self.pageable = self.resultItems.count < viewModel.totalItems
+        self.isResult = true
         self.tableView.reloadData()
     }
 }
@@ -140,6 +143,7 @@ extension SearchViewController {
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     // Todo: 데이터 적용 및 테이블셀 적용
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        isResult && resultItems.isEmpty ? tableView.noResult("일치하는 검색 결과가 없습니다 :(") : tableView.restore()
         return resultItems.count
     }
     
