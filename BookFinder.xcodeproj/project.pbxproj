@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		2E752D461A7E35A518B2AC8D /* Pods_BookFinderTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2447B58FBD78270F485DB45 /* Pods_BookFinderTests.framework */; };
 		36A58DE82867578C00ADD660 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A58DE72867578C00ADD660 /* AppDelegate.swift */; };
-		36A58DEC2867578C00ADD660 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A58DEB2867578C00ADD660 /* ViewController.swift */; };
 		36A58DF12867578D00ADD660 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36A58DF02867578D00ADD660 /* Assets.xcassets */; };
 		36A58DF42867578D00ADD660 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A58DF22867578D00ADD660 /* LaunchScreen.storyboard */; };
 		36A58DFF2867578D00ADD660 /* BookFinderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A58DFE2867578D00ADD660 /* BookFinderTests.swift */; };
@@ -36,7 +35,6 @@
 		218933852E9E45213B1C9894 /* Pods-BookFinder-BookFinderUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-BookFinder-BookFinderUITests.debug.xcconfig"; path = "Target Support Files/Pods-BookFinder-BookFinderUITests/Pods-BookFinder-BookFinderUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		36A58DE42867578C00ADD660 /* BookFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BookFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		36A58DE72867578C00ADD660 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		36A58DEB2867578C00ADD660 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		36A58DF02867578D00ADD660 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		36A58DF32867578D00ADD660 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36A58DF52867578D00ADD660 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -115,7 +113,6 @@
 				36EBAD2928675B42009AB643 /* Scenes */,
 				36A58E192867594300ADD660 /* Resources */,
 				36A58E182867592200ADD660 /* SupportingFiles */,
-				36A58DEB2867578C00ADD660 /* ViewController.swift */,
 			);
 			path = BookFinder;
 			sourceTree = "<group>";
@@ -336,7 +333,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36A58DEC2867578C00ADD660 /* ViewController.swift in Sources */,
 				36EBAD3528675B5E009AB643 /* SearchViewController.swift in Sources */,
 				36EBAD3628675B5E009AB643 /* SearchInteractor.swift in Sources */,
 				36EBAD3328675B5E009AB643 /* SearchRouter.swift in Sources */,
