@@ -11,6 +11,8 @@
 //
 
 import UIKit
+import SnapKit
+import Then
 
 protocol SearchDisplayLogic: AnyObject {
     
@@ -20,8 +22,19 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     var interactor: SearchBusinessLogic?
     var router: (NSObjectProtocol & SearchRoutingLogic & SearchDataPassing)?
     
-    // MARK: Object lifecycle
+    lazy var tableView = UITableView(frame: .zero).then {
+        $0.dataSource = self
+        $0.delegate = self
+        $0.backgroundColor = .white
+        $0.separatorStyle = .none
+    }
     
+    private lazy var searchController = UISearchController(searchResultsController: nil).then {
+        $0.searchBar.delegate = self
+    }
+    
+    // MARK: Object lifecycle
+
     override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         setup()
@@ -62,5 +75,50 @@ class SearchViewController: UIViewController, SearchDisplayLogic {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
+        setupLayout()
+    }
+}
+
+extension SearchViewController {
+    private func setupView() {
+        view.backgroundColor = .white
+        navigationItem.title = "Book Finder"
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .never
+        navigationItem.searchController = searchController
+    }
+    
+    private func setupLayout() {
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.bottom.equalToSuperview()
+        }
+    }
+}
+
+// MARK: - UITableViewDataSource & UITableViewDelegate
+
+extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
+    // Todo: 데이터 적용 및 테이블셀 적용
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
+    }
+}
+
+// MARK: - UISearchBarDelegate
+
+extension SearchViewController: UISearchBarDelegate {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        print(#function)
     }
 }
