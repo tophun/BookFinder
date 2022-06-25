@@ -101,12 +101,11 @@
 		36A58DE62867578C00ADD660 /* BookFinder */ = {
 			isa = PBXGroup;
 			children = (
-				36A58DE72867578C00ADD660 /* AppDelegate.swift */,
+				36A58E172867591600ADD660 /* Application */,
+				36A58E192867594300ADD660 /* Resources */,
+				36A58E182867592200ADD660 /* SupportingFiles */,
 				36A58DEB2867578C00ADD660 /* ViewController.swift */,
 				36A58DED2867578C00ADD660 /* Main.storyboard */,
-				36A58DF02867578D00ADD660 /* Assets.xcassets */,
-				36A58DF22867578D00ADD660 /* LaunchScreen.storyboard */,
-				36A58DF52867578D00ADD660 /* Info.plist */,
 			);
 			path = BookFinder;
 			sourceTree = "<group>";
@@ -117,6 +116,31 @@
 				36A58DFE2867578D00ADD660 /* BookFinderTests.swift */,
 			);
 			path = BookFinderTests;
+			sourceTree = "<group>";
+		};
+		36A58E172867591600ADD660 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				36A58DE72867578C00ADD660 /* AppDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		36A58E182867592200ADD660 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				36A58DF52867578D00ADD660 /* Info.plist */,
+				36A58DF22867578D00ADD660 /* LaunchScreen.storyboard */,
+			);
+			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		36A58E192867594300ADD660 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				36A58DF02867578D00ADD660 /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 		CB45BEAD01D1094E72601101 /* Pods */ = {
@@ -449,7 +473,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YAQDP772UC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BookFinder/Info.plist;
+				INFOPLIST_FILE = BookFinder/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -479,7 +503,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = YAQDP772UC;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = BookFinder/Info.plist;
+				INFOPLIST_FILE = BookFinder/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
