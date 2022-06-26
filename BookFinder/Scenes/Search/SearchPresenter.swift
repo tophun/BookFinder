@@ -35,7 +35,7 @@ class SearchPresenter: SearchPresentationLogic {
             let resultItem = Search.Search.ViewModel.ResultModel(
                 thumnailURL: $0.volumeInfo?.imageLinks?.smallThumbnail ?? "",
                 title: $0.volumeInfo?.title ?? "",
-                author: $0.volumeInfo?.authors.joined(separator: ",") ?? "",
+                author: $0.volumeInfo?.authors.joined(separator: ", ") ?? "",
                 publishedDate: $0.volumeInfo?.publishedDate ?? ""
             )
             resultItems.append(resultItem)
